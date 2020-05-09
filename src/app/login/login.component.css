@@ -1,0 +1,32 @@
+.card{
+    width: 400px;
+    height: 600px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.5)),url(../../assets/imgs/login-bg.jpg);
+    background-size: cover;
+    color: #fff;
+}
+.active{
+    background: #007bff;
+    padding:0.6rem;
+}
+.active a{
+    color: #fff;
+    text-decoration: none;
+}
+small{
+    color: #fff;
+}
+input,input:focus{
+    background: #1b1d1d;
+    outline: none;
+    border: none;
+    color: #fff;
+    box-shadow: none;
+}
+input::placeholder{
+    color: #fff;
+}

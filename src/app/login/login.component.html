@@ -1,0 +1,57 @@
+<div class="card">
+    <div class="card-body mt-4 d-flex align-items-center justify-content-center">
+        <div [hidden]="loginForm" class="w-100">
+        <h4 class="card-title text-center">Login</h4>
+        <div class="card-text">
+            <form class="login-form" #userForm="ngForm" (submit)="onSubmit('L')">
+            <div class="form-group mb-4">
+                <input type="text" class="form-control" placeholder="Email" name="email" autocomplete="off" ngModel #email="ngModel"
+                    [class.is-invalid]="(email.invalid && email.touched) || (userForm.submitted && email.invalid) ||(email.errors?.pattern)" required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/>
+                    <small class="text-danger" [class.d-none]="email.valid || email.untouched">Enter email</small>
+                    <small *ngIf="email.errors?.pattern" class="text-danger">Enter a valid email</small>
+            </div>
+            <div class="form-group mb-4">
+                <input type="password" class="form-control" placeholder="Password" name="password" autocomplete="off" ngModel #password="ngModel"
+                [class.is-invalid]="(password.invalid && password.touched) || (userForm.submitted && password.invalid)" required>
+                <small class="text-danger" [class.d-none]="password.valid || password.untouched">Password cannot be empty</small>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-block btn-danger btn-md">Login</button>
+            </div>
+        </form>
+        <div class="text-center mt-5">
+            Don't have account ? <button type="button" class="btn btn-sm btn-primary" (click)="toggleForms()">Register</button> Now
+            </div>
+        </div>
+    </div>
+    <div [hidden]="regForm" class="w-100">
+    <form class="register-form" #registerForm="ngForm" (submit)="onSubmit('R')">
+            <h4 class="text-center">REGISTER</h4>
+            <div class="form-group">
+                <input type="text" class="form-control" name="uname" ngModel #uname="ngModel" required minlength="4"
+                [class.is-invalid]="(uname.invalid && uname.touched) || (registerForm.submitted && uname.invalid)" placeholder="Name"/>
+                <small *ngIf="uname.invalid && uname.touched">Name cannot be empty</small>
+                <small *ngIf="uname.errors?.minlength">Name should be more than 4 chars</small>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="uemail" placeholder="E-mail" ngModel #uemail="ngModel" required
+                pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [class.is-invalid]="(uemail.invalid && uemail.touched) || (registerForm.submitted && uemail.invalid) || uemail.errors?.pattern" />
+                <small *ngIf="uemail.invalid && uemail.touched">Email cannot be empty</small>
+                <small *ngIf="uemail.errors?.pattern">Enter a valid email</small>
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" name="upassword" placeholder="Password" ngModel #upassword="ngModel" required
+                [class.is-invalid]="(upassword.invalid && upassword.touched) || (registerForm.submitted && upassword.invalid)"  />
+                <small *ngIf="upassword.invalid && upassword.touched">Password cannot be empty</small>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-md btn-block btn-danger">REGISTER</button>
+            </div>
+            <div class="text-center">
+                Have an account? <button type="button" class="btn btn-sm btn-primary" (click)="toggleForms()">Sign In</button>
+            </div>
+    </form>
+</div>
+    </div>
+</div>
+
